@@ -11,9 +11,9 @@ function App() {
 
   return (
     <>
-      <Courses name="HTML" price="$19.99" rating="4.5" image={html} show={true} />
-      <Courses name="CSS" price="$19.99" rating="4.3" image={css} show={true} />
-      <Courses name="JavaScript" price="$29.99" rating="4.7" image={js} show={true} />
+      <Courses name="HTML" price="$19.99" rating="4.5" image={html} />
+      <Courses name="CSS" price="$19.99" rating="4.3" image={css} />
+      <Courses name="JavaScript" price="$29.99" rating="4.7" image={js} />
     </>
   )
 }

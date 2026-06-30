@@ -1,7 +1,6 @@
 
 function Courses(props) {
-if(props.show == true) {
-  return (
+return (
     <div className="card"> 
       <img src={props.image} alt="Course Image" />
       <h2>{props.name}</h2>
@@ -10,12 +9,6 @@ if(props.show == true) {
         <button>Explore Courses</button>
     </div>
   );
-}
-else{
-  return (
-    <div className="card">course not found</div>
-  )
- }
-}
 
+}
 export default Courses
