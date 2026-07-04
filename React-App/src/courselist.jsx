@@ -5,16 +5,16 @@ import js from "./assets/javascript.png";
 
 function CourseList() {
   const courses = [
-    { name: "HTML", price: "$19.99", rating: 4.5, image: html },
-    { name: "CSS", price: "$19.99", rating: 4.3, image: css },
-    { name: "JavaScript", price: "$29.99", rating: 4.7, image: js },
+    { id :1,name: "HTML", price: 19.99, rating: 4.5, image: html },
+    { id :2,name: "CSS", price: 19.99, rating: 4.3, image: css },
+    { id :3,name: "JavaScript", price: 29.99, rating: 4.7, image: js },
   ];
-
+   
   return (
     <>
       {courses.map((course, index) => (
         <Courses
-          key={index}
+         key={course.id}
           show={true}
           name={course.name}
           price={course.price}
