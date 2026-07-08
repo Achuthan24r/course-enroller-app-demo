@@ -1,20 +1,24 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function Courses(props) {
-  let purschased = false;
-   function buyCourse(discount) {
-     console.log(props.name , "Course purchased!",discount,"% off");
-     purschased = true;
+  const [purchased, setPurchased] = useState(false);
+  const [discount, setDiscount] = useState(props.price);
+  function buyCourse(amt) {
+    console.log(props.name , "Course purchased!",discount,"% off");
+    setPurchased(true);
+    setDiscount(discount-amt);
    }
   return (
      props.name && (
       <div className="card">
         <img src={props.image} alt="Course" />
         <h2>{props.name}</h2>
-        <p>{props.price}</p>
+        <p>{discount}</p>
         <span>{props.rating}</span>
-        <button onClick={(event) => { buyCourse(10); console.log(event); }}>Explore Courses</button>
-        <p> {purschased ? "already Purchased!" : "get it now!"}</p>
+        <button onClick={() => setPurchased(false)}>Delete</button>
+        <button onClick={(event) => { buyCourse(10); }}>Explore Courses</button>
+        <p> {purchased ? "already Purchased!" : "get it now!"}</p>
     </div>
    ) );
 }
