@@ -1,27 +1,25 @@
 import Courses from "./Courses";
-import html from "./assets/html.png";
-import css from "./assets/css.png";
-import js from "./assets/javascript.png";
- import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
+
 function CourseList() {
-  const [courses, setCourses] = useState([
-    { id :1,name: "HTML", price: 19.99, rating: 4.5, image: html },
-    { id :2,name: "CSS", price: 19.99, rating: 4.3, image: css },
-    { id :3,name: "JavaScript", price: 29.99, rating: 4.7, image: js },
-  ]);
-  const [filteredCourses, setFilteredCourses] = useState(courses);
+  const [courses, setCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
 
   useEffect(() => {
-     fetch("https://jsonplaceholder.typicode.com/posts")
+     fetch("http://localhost:3000/courses")
       .then((response) =>{ return response.json(); })
-      
-      .then((data => console.log(data)))
+      .catch((error) => console.log(error))
+      .then((data) => {
+        setCourses(data);
+        setFilteredCourses(data);
+      })
   }, []);
 
 
   function deleteCourse(id) {
     const updatedCourses = courses.filter((course) => course.id !== id);
     setCourses(updatedCourses);
+    setFilteredCourses(updatedCourses);
   }
   return (
     <>
