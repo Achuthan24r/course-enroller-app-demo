@@ -1,29 +1,8 @@
 import Courses from "./Courses";
-import { useState, useEffect } from "react";
+import usefetch from "./usefetch";
 
 function CourseList() {
-  const [courses, setCourses] = useState([]);
-  const [filteredCourses, setFilteredCourses] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/courses")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status} ${response.statusText}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setCourses(data);
-        setFilteredCourses(data);
-        setError(null);
-      })
-      .catch((error) => {
-        console.error(error);
-        setError(error.message || "Failed to load courses.");
-      });
-  }, []);
+  const [courses, filteredCourses, error] = usefetch("http://localhost:3000/courses");
 
   function deleteCourse(id) {
     const updatedCourses = courses.filter((course) => course.id !== id);
@@ -35,7 +14,7 @@ function CourseList() {
       {error ? (
         <div className="error-message">Error: {error}</div>
       ) : (
-        filteredCourses.map((course) => (
+        filteredCourses?.map((course) => (
           <Courses
             key={course.id}
             show={true}
