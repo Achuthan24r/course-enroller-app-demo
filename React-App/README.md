@@ -1,16 +1,33 @@
-# React + Vite
+# React-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Small Vite + React demo app with a JSON mock API.
 
-Currently, two official plugins are available:
+## Prerequisites
+- Node.js and npm (Node 16+ recommended)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Install
+```powershell
+Set-Location -Path 'D:\codeio\React-App'
+npm install
+```
 
-## React Compiler
+## Run the app
+```powershell
+Set-Location -Path 'D:\codeio\React-App'
+npm run dev
+```
+- Vite normally serves at `http://localhost:5173/`; if that port is in use it will pick the next available port (e.g. `5174`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Start the mock API (json-server)
+```powershell
+Set-Location -Path 'D:\codeio\React-App'
+npx json-server --watch data/dummy.json --port 3000
+```
+- Courses endpoint: `http://localhost:3000/courses`
 
-## Expanding the Oxlint configuration
+## Notes
+- Asset imports in `src/App.jsx` must match filenames in `src/assets` (e.g. `javascript.png`, not `js.png`).
+- If Vite shows unresolved import errors, confirm the relative path and filename in the import statement.
+- To disable the Vite overlay error screen, set `server.hmr.overlay` to `false` in `vite.config.js` (not recommended while debugging).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+If you want, I can also add a short `npm` script to start both servers together or a `.env` file with ports.

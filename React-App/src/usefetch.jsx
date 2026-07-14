@@ -2,7 +2,7 @@ import Courses from "./Courses";
 import { useState, useEffect } from "react";
 
 const usefetch = (url) => {
-    const [courses, setCourses] = useState(null);
+    const [info, setInfo] = useState(null);
     const [filteredCourses, setFilteredCourses] = useState(null);
     const [error, setError] = useState(null);
 
